@@ -1,6 +1,6 @@
 # MEDICO, PACIENTE, CONSULTAS
 
-=> O nosso sistema receberá dados de médicos e pacientes. Um médico atente a um paciente por vez. O paciente pode ter várias consultas com diferentes médicos.
+=> O nosso sistema receberá dados de médicos e pacientes. Um médico atende a um paciente por vez. O paciente pode ter várias consultas com diferentes médicos.
 
 1. O nosso sistema é de gestão de médicos para uma clínica. Ele permite o cadastro e gerenciamento de médicos, armazenando suas informações como:
 - nome
@@ -14,6 +14,18 @@
 - Listagem de médicos cadastrados
 - Atualização de dados do médico
 - Remoção de médicos
+
+
+# AULA 02
+Verbos/métodos HTTP
+`GET` -> É quando você pede algo de retorno.
+`POST` -> É quando você passa informações.
+PUT
+DELETE
+
+Resquest [REQUISIÇÃO] -> é o que você passa esperando o retorno.
+Response [RESPOSTA] -> é a resposta que você recebe.
+
 
 
 
