@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController // Informa ao spring boot que a classe OlaMundo é uma classe do tipo controladora.
 public class OlaMundo {
     
-    @GetMapping // Informa que o método será invocado quando um get acontecer
+    @GetMapping() // Informa que o método será invocado quando um get acontecer
     public String olaMundo(){
         return "Olá Mundo";
     }
