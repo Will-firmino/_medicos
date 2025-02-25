@@ -85,25 +85,61 @@ Normalmente, uma API oferece dados para serem consumidos pelo frontend.
 `@Id`
 => Define que o atributo será uma chave primária na tabela.
 
-`@GeneratedValue`
+`@GeneratedValue(strategy = GenerationType.IDENTITY)`
 => Define que a criação do ID será de forma automática.
+=> strategy -> é a estratégia utilizada.
+=> GenerationType -> é o tipo de geração utilizada.
+=> IDENTITY -> a geração automática será através do ID.
 
 `@Enumerated`
 => Informa que aquele atributo é uma classe enum.
 
+`@Embedded`
+=> Anota que uma classe faz parte dessa tabela no banco de dados.
+
+`@Embeddable`
+=> Anota que essa classe irá fazer parte de uma tabela de uma outra classe.
 
 
+4. BANCO DE DADOS
+
+`Chave primária (PK)` -> é o atributo que identifica a tabela no banco de dados.
+`Chave estrangeira (FK)` -> é o atributo que se relaciona com uma tabela que possui esse atributo como chave primária, no banco de dados.
 
 
+5. PADROES DE PROJETO
+`DTO` -> Padrão de projetos onde isolamos cada item que está sendo enviado pelo `simulador de requisição`. DATA TRANSFER OBJECT, OBJETO DE TRANSFERÊNCIA DE DADOS.
+- Criação de uma classe `record` chamada `DadosCadastroMedico`, onde iremos receber os dados do json e converter em dados autônomos.
 
+`DAO` -> é um padrão de projetos em que separamos a lógica do acesso ao banco de dados do restante da aplicação.
 
+`INTERFACE` -> é um tipo de padrão de projetos presente no java onde uma classe é declarada e ela possui atributos constantes e não pode ser instânciada. É conhecida como uma classe de contrato, onde você poderá utilizar os métodos e atributos dessa classe.
 
-
-
-
+`INJEÇÃO DE DEPÊNDECIAS` -> é um tipo de padrão de projetos [DI] onde você informa ao springboot que ele irá ficar responsável pela criação de determinado dado (ele que conhece como funciona).
 
 
 # Atividade Realizada no dia 14/02/2025 - Colocar no Notion
 - Construir um pacote chamado [endereco] dentro de [model] e criar uma classe [Endereco] com os atributos listados abaixo. Além disso, crie os getters, setters, construtor com todos os parâmetros e construtor sem nenhum parâmetro com lombok.
 (logradouro, bairro, cep, cidade, uf, numero, complemento)
 * Coloque todos os atributos privados e do tipo String.
+
+
+# Atividade Realizada no dia 21/02/2025 
+1. Criar um novo projeto chamado [api_produtos] através do site do inicializador do spring boot.
+
+2. No momento da escolha das depêndecias, escolher as seguintes:
+- Spring boot devtools
+- Spring Web
+- Lombok
+
+3. No projeto, utilizar o padrão de projetos MVC.
+- Criar um pacote [controller] e incluir uma classe controladora chamada [ProdutoController].
+- Nessa classe, utilizar um endpoint e também um método que irá receber informações pelo insomnia. Essas informações deverão ser exibidas no terminal.
+- Lembrar de utilizar as anotations das depêndecias.
+
+4. Criar uma pasta chamada [model] e criar uma classe [Produto]. Essa classe será uma classe modelo. 
+- Essa classe deverá ter os seguintes atributos privados:
+- id;
+- nome;
+- preco;
+- Utilize na classe model as anotations para transformar essa classe em uma tabela no banco de dados e também para que o spring entenda que essa classe é uma classe de entidade.
