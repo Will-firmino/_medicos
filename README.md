@@ -143,3 +143,13 @@ Normalmente, uma API oferece dados para serem consumidos pelo frontend.
 - nome;
 - preco;
 - Utilize na classe model as anotations para transformar essa classe em uma tabela no banco de dados e também para que o spring entenda que essa classe é uma classe de entidade.
+
+
+# Criar um novo model chamado [paciente]
+1. Nessa classe [Paciente.java], inclua as características nome, cpf, email, senha, telefone.
+2. Além disso, utilize a classe [Endereco.java] para receber o endereço do Paciente.
+3. Faça os testes pelo insomnia para saber se no banco de dados h2, está sendo recebido os dados.
+
+
+# Criar um Update para o paciente nos campos
+nome, email, telefone, endereco
