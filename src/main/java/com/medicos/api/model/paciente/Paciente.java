@@ -1,67 +1,64 @@
-package com.medicos.api.model.medico;
+package com.medicos.api.model.paciente;
 
 import com.medicos.api.model.endereco.Endereco;
-
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "medicos")
-public class Medico {
-
+@Table(name = "pacientes")
+public class Paciente {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
+    private String cpf;
     private String email;
-    private String crm;
-    private Boolean ativo = true;
-
-    @Enumerated(EnumType.STRING)
-    private Especialidade especialidade;
+    private String senha;
+    private String telefone;
 
     @Embedded
     private Endereco endereco;
 
-    public Medico(DadosCadastroMedico dados) {
+
+    public Paciente(DadosCadastroPaciente dados) {
         this.nome = dados.nome();
+        this.cpf = dados.cpf();
         this.email = dados.email();
-        this.crm = dados.crm();
-        this.especialidade = dados.especialidade();
+        this.senha = dados.senha();
+        this.telefone = dados.telefone();
         this.endereco = new Endereco(dados.endereco());
     }
 
-    // Método responsável por realizar a verificação de qual campo está sendo atualizado.
-    public void atualizarInformacoes(DadosAtualizacaoMedico dados) {
+    public void atualizarInformacoes(DadosAtualizacaoPaciente dados) {
         if (dados.nome() != null) {
             this.nome = dados.nome();
         }
+   
         if (dados.email() != null) {
             this.email = dados.email();
         }
+ 
+        if (dados.telefone() != null) {
+            this.telefone = dados.telefone();
+        }
+
         if (dados.endereco() != null) {
             this.endereco.atualizarInformacoes(dados.endereco());
         }
+    
+
     }
-
-    public void exclusaoLogica() {
-        this.ativo = false;
-    }
-
-
-
-
-
-
 }
