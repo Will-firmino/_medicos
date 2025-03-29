@@ -19,18 +19,18 @@ import jakarta.transaction.Transactional;
 public class PacienteController {
     
     @Autowired
-    private PacienteRepository repository;
+    private PacienteRepository pacienteRepository;
 
     @PostMapping
     @Transactional
     public void cadastrar(@RequestBody DadosCadastroPaciente dados ) {
-        repository.save(new Paciente(dados));
+        pacienteRepository.save(new Paciente(dados));
     }
 
     @PutMapping
     @Transactional
     public void atualizar(@RequestBody DadosAtualizacaoPaciente dados) {
-        var paciente = repository.getReferenceById(dados.id());
+        var paciente = pacienteRepository.getReferenceById(dados.id());
         paciente.atualizarInformacoes(dados);
 
         

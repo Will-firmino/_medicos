@@ -1,5 +1,7 @@
 package com.medicos.api.model.consulta;
 
-public class ConsultaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ConsultaRepository extends JpaRepository<Consulta, Integer>{
     
 }

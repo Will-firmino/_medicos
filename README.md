@@ -153,3 +153,17 @@ Normalmente, uma API oferece dados para serem consumidos pelo frontend.
 
 # Criar um Update para o paciente nos campos
 nome, email, telefone, endereco
+
+
+# RELACIONAMENTO ENTRE TABELAS NO SPRINGBOOT
+`@OneToOne` ->  Um para um. (Uma consulta está ligada a um único paciente).
+`@OneToMany` -> Um para muitos. (Um médico tem várias consultas).
+`@ManyToOne` -> Muitos para um. (Muitas consultas para um unico médico).
+`@ManyToMany` -> Muitos para muitos. (Muitos pacientes para muitas consultas).
+
+`@JoinColumn(name='fk')` -> Define o nome da coluna `alias` no banco que faz a ligação.
+
+OBS:
+1. Sempre defina o lado "dono" da `relação(@JoinColumn) `no lado de quem tem a `FK(chave estrangeira)`.
+2. Use o `Cascade` se quiser que a operação como `persist` ou `remove` sejam propagadas.
+

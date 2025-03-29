@@ -20,13 +20,13 @@ import com.medicos.api.model.medico.MedicoRepository;
 public class MedicoController {
     
     @Autowired // Sobrescrevendo algo, é um padrão utilizado na injeção de depêndencia
-    private MedicoRepository repository;
+    private MedicoRepository medicoRepository;
 
     // Aqui fica o método de criação - CREATE
     @PostMapping
     @Transactional
     public void cadastrar(@RequestBody DadosCadastroMedico dados ) {
-        repository.save(new Medico(dados));
+        medicoRepository.save(new Medico(dados));
     }
 
     // Aqui fica o método de atualização - UPDATE
@@ -34,7 +34,7 @@ public class MedicoController {
     @PutMapping
     @Transactional
     public void atualizar(@RequestBody DadosAtualizacaoMedico dados) {
-        var medico = repository.getReferenceById(dados.id());
+        var medico = medicoRepository.getReferenceById(dados.id());
         medico.atualizarInformacoes(dados);
     }
 
@@ -51,7 +51,7 @@ public class MedicoController {
     @DeleteMapping("/{id}")
     @Transactional
     public void excluir(@PathVariable Integer id) {
-        var medico = repository.getReferenceById(id);
+        var medico = medicoRepository.getReferenceById(id);
         medico.exclusaoLogica();
     }
 
