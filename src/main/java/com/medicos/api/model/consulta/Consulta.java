@@ -19,10 +19,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+// @Getter
+// @Setter
+// @AllArgsConstructor
+// @NoArgsConstructor
 @Entity
 @Table(name = "consulta")
 public class Consulta {
@@ -37,7 +37,7 @@ public class Consulta {
 
     @ManyToOne
     @JoinColumn(name = "pacienteId")
-    private Paciente paciente; 
+    private Paciente paciente;
 
     private String observacao;
 
@@ -46,30 +46,28 @@ public class Consulta {
 
     private LocalDateTime data;
 
-    public Consulta(DadosAgendamentoConsulta dados) {
-        this.medico = dados.medicoId();
-        this.paciente = dados.pacienteId();
-        this.observacao = dados.observacao();
-        this.status = dados.status();
-        this.data = dados.data();
-}
+    // public Consulta(DadosAgendamentoConsulta dados) {
+    // this.medico = dados.medicoId();
+    // this.paciente = dados.pacienteId();
+    // this.observacao = dados.observacao();
+    // this.status = dados.status();
+    // this.data = dados.data();
+    // }
 
-    public void atualizarInformacoes(DadosAtualizacaoConsulta dados) {
-        if (dados.medicoId() != null) {
-            this.medico = dados.medicoId();
-        }
-        if (dados.pacienteId() != null) {
-            this.paciente = dados.pacienteId();
-        }
-        if (dados.observacao() != null) {
-            this.observacao = dados.observacao();
-        }
-        if (dados.status() != null) {
-            this.status = dados.status();
-        }
-        if (dados.data() != null) {
-            this.data = dados.data();
-        }
-    }
-
+    // public void atualizarInformacoes(DadosAtualizacaoConsulta dados) {
+    // if (dados.medicoId() != null) {
+    // this.medico = dados.medicoId();
+    // }
+    // if (dados.pacienteId() != null) {
+    // this.paciente = dados.pacienteId();
+    // }
+    // if (dados.observacao() != null) {
+    // this.observacao = dados.observacao();
+    // }
+    // if (dados.status() != null) {
+    // this.status = dados.status();
+    // }
+    // if (dados.data() != null) {
+    // this.data = dados.data();
+    // }
 }
