@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.medicos.api.model.paciente.DadosAtualizacaoPaciente;
 import com.medicos.api.model.paciente.DadosCadastroPaciente;
+import com.medicos.api.model.paciente.DadosListagemPacientes;
 import com.medicos.api.model.paciente.Paciente;
 import com.medicos.api.model.paciente.PacienteRepository;
 
@@ -47,14 +49,24 @@ public class PacienteController {
 
     // Listagem e Busca de pacientes
 
-    // Listagem de todos os pacientes (sem filtro, sem paginação)
+    // Listagem de todos os pacientes (Forma com stream())
     @GetMapping("/listar")
     public List<DadosListagemPacientes> listarPacientes() {
-        pacienteRepository.findAll();
-
+        return pacienteRepository.findAll()
+                .stream()
+                .map(DadosListagemPacientes::new)
+                .toList(); // Para converter a lista para stream.
     }
-    // map() -> Mapeia (separa) os elementos de uma lista.
-    // stream() -> Faz com que consigamos utilizar métodos prontos.
-    // toList -> Transforma o resultado final em uma lista.
+
+    // Buscar um paciente pelo nome
+    @GetMapping
+    public List<DadosListagemPacientes> buscarPorNome(@RequestParam String nome) {
+        return pacienteRepository.findByNomeContainingIgnoreCase(nome)
+                .stream()
+                .map(DadosListagemPacientes::new)
+                .toList();
+    }
+
+    // Buscar um paciente pelo email
 
 }
