@@ -5,24 +5,13 @@ import java.time.LocalDateTime;
 import com.medicos.api.model.medico.Medico;
 import com.medicos.api.model.paciente.Paciente;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.Setter;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
-// @Getter
-// @Setter
-// @AllArgsConstructor
-// @NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "consulta")
 public class Consulta {
@@ -46,28 +35,29 @@ public class Consulta {
 
     private LocalDateTime data;
 
-    // public Consulta(DadosAgendamentoConsulta dados) {
-    // this.medico = dados.medicoId();
-    // this.paciente = dados.pacienteId();
-    // this.observacao = dados.observacao();
-    // this.status = dados.status();
-    // this.data = dados.data();
-    // }
+    public Consulta(DadosAgendamentoConsulta dados) {
+        this.medico = dados.medicoId();
+        this.paciente = dados.pacienteId();
+        this.observacao = dados.observacao();
+        this.status = dados.status();
+        this.data = dados.data();
+    }
 
-    // public void atualizarInformacoes(DadosAtualizacaoConsulta dados) {
-    // if (dados.medicoId() != null) {
-    // this.medico = dados.medicoId();
-    // }
-    // if (dados.pacienteId() != null) {
-    // this.paciente = dados.pacienteId();
-    // }
-    // if (dados.observacao() != null) {
-    // this.observacao = dados.observacao();
-    // }
-    // if (dados.status() != null) {
-    // this.status = dados.status();
-    // }
-    // if (dados.data() != null) {
-    // this.data = dados.data();
-    // }
+    public void atualizarInformacoes(DadosAtualizacaoConsulta dados) {
+        if (dados.medicoId() != null) {
+            this.medico = dados.medicoId();
+        }
+        if (dados.pacienteId() != null) {
+            this.paciente = dados.pacienteId();
+        }
+        if (dados.observacao() != null) {
+            this.observacao = dados.observacao();
+        }
+        if (dados.status() != null) {
+            this.status = dados.status();
+        }
+        if (dados.data() != null) {
+            this.data = dados.data();
+        }
+    }
 }

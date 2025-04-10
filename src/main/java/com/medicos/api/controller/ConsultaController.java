@@ -31,30 +31,30 @@ public class ConsultaController {
     @Autowired
     private PacienteRepository pacienteRepository;
 
-    // @PostMapping
-    // @Transactional
-    // public Consulta agendar(@RequestBody DadosAgendamentoConsulta dados) {
-    // var medico = medicoRepository.getReferenceById(dados.medicoId());
-    // var paciente = pacienteRepository.getReferenceById(dados.pacienteId());
+    @PostMapping
+    @Transactional
+    public Consulta agendar(@RequestBody DadosAgendamentoConsulta dados) {
+        var medico = medicoRepository.getReferenceById(dados.medicoId());
+        var paciente = pacienteRepository.getReferenceById(dados.pacienteId());
 
-    // var consulta = new Consulta(dados);
-    // consulta.setMedico(medico);
-    // consulta.setPaciente(paciente);
+        var consulta = new Consulta(dados);
+        consulta.setMedico(medico);
+        consulta.setPaciente(paciente);
 
-    // return consultaRepository.save(consulta);
-    // }
+        return consultaRepository.save(consulta);
+    }
 
-    // @PutMapping
-    // @Transactional
-    // private void atualizar(@RequestBody DadosAtualizacaoConsulta dados) {
-    // var consulta = consultaRepository.getReferenceById(dados.id());
-    // consultaRepository.atualizarInformacoes(dados);
-    // }
+    @PutMapping
+    @Transactional
+    private void atualizar(@RequestBody DadosAtualizacaoConsulta dados) {
+        var consulta = consultaRepository.getReferenceById(dados.id());
+        consultaRepository.atualizarInformacoes(dados);
+    }
 
-    // @DeleteMapping("/{id}")
-    // @Transactional
-    // public void excluir(@PathVariable Integer id) {
-    // consultaRepository.deleteById(id);
-    // }
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Integer id) {
+        consultaRepository.deleteById(id);
+    }
 
 }
