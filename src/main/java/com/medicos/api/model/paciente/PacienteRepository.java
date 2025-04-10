@@ -8,4 +8,6 @@ public interface PacienteRepository extends JpaRepository<Paciente, Integer> {
 
     List<Paciente> findByNomeContainingIgnoreCase(String nome);
 
+    List<Paciente> findByEmailContainingIgnoreCase(String email);
+
 }

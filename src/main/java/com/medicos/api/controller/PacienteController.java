@@ -59,7 +59,7 @@ public class PacienteController {
     }
 
     // Buscar um paciente pelo nome
-    @GetMapping
+    @GetMapping("/listarpornome")
     public List<DadosListagemPacientes> buscarPorNome(@RequestParam String nome) {
         return pacienteRepository.findByNomeContainingIgnoreCase(nome)
                 .stream()
@@ -68,5 +68,12 @@ public class PacienteController {
     }
 
     // Buscar um paciente pelo email
+    @GetMapping("/listarporemail")
+    public List<DadosListagemPacientes> buscarPorEmail(@RequestParam String email) {
+        return pacienteRepository.findByEmailContainingIgnoreCase(email)
+                .stream()
+                .map(DadosListagemPacientes::new)
+                .toList();
+    }
 
 }
